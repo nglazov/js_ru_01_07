@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CommentList from './CommentList'
 
 class Article extends Component {
     state = {
@@ -25,6 +26,7 @@ class Article extends Component {
             <div>
                 <h1 onClick = {this.toggleOpen}>{ article.title }</h1>
                 {body}
+                {article.comments ? <CommentList comments = {article.comments}/> : null}
             </div>
         )
     }
