@@ -26,6 +26,7 @@ class Article extends Component {
             <div>
                 <h1 onClick = {this.toggleOpen}>{ article.title }</h1>
                 {body}
+                //лучше эту проверку внести в CommentList
                 {article.comments ? <CommentList comments = {article.comments}/> : null}
             </div>
         )
