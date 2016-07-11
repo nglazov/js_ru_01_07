@@ -1,16 +1,21 @@
-import React, {Component} from 'react'
+import React, { PropTypes } from 'react'
 
-class Comment extends Component {
-    render() {
-        const {comment} = this.props
-        //лучше сделать Comment stateless-компонентом + не вносить li, а то сильно ограничиваете возможность переиспользовать компонент
-        return (
-            <li>
-                <p>{comment.text}</p>
-                <p>from {comment.user}</p>
-            </li>
-        )
-    }
+function Comment(props) {
+    if (!props.comment) return <h3>Something</h3>
+    const { comment: { text, user } } = props
+    return (
+        <div>
+            <p>{text}</p>
+            <b>by {user}</b>
+        </div>
+    )
+}
+
+Comment.propTypes = {
+    comment: PropTypes.shape({
+        text: PropTypes.string.isRequired,
+        user: PropTypes.string
+    })
 }
 
 export default Comment
