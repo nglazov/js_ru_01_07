@@ -1,15 +1,16 @@
-import React, { Component }  from 'react'
+import React from 'react'
 import Article from './Article'
-import oneOpenArticle from './decorators/oneOpenArticle'
+import oneOpenArticle from './mixins/oneOpenArticle'
 
-class ArticleList extends Component {
+const ArticleListOld = React.createClass({
+    mixins: [oneOpenArticle],
     render() {
-        const { articles, openArticle, openArticleId } = this.props
+        const { articles } = this.props
 
         const listItems = articles.map((article) => <li key={article.id}>
             <Article article = {article}
-                isOpen = {article.id === openArticleId}
-                openArticle = { openArticle(article.id) }
+                     isOpen = {article.id == this.state.openArticleId}
+                     openArticle = {this.openArticle(article.id)}
             />
         </li>)
         return (
@@ -21,6 +22,6 @@ class ArticleList extends Component {
             </div>
         )
     }
-}
+})
 
-export default oneOpenArticle(ArticleList)
+export default ArticleListOld
