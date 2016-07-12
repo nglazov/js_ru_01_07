@@ -9,6 +9,7 @@ export default (Component) => class DecoratedComponent extends React.Component {
         console.log('---', nextState.openArticleId)
     }
 
+  //привязка к статье в названиях плохо - вы же создаете декоратор для переиспользования логики в других местах, почему openArticle, openArticleId?
     openArticle = id => ev => {
         if (ev) ev.preventDefault()
 
