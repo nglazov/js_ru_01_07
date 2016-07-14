@@ -61,6 +61,7 @@ class ArticleList extends Component {
     handleDayClick = ((e, day) => {
         const range = DateUtils.addDayToRange(day, this.state.range);
         this.setState({range});
+        // .bind(this) - лишнее, если задаете через =>
     }).bind(this)
 
     handleSelectChange = (selectedArticles) => {
