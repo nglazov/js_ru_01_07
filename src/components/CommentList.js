@@ -53,6 +53,7 @@ class CommentList extends Component {
     }
 }
 
+//тогда стоит наоборот CommentList перенести в контейнеры, а AddComment в компоненты, раз он никак на стор не завязан
 export default connect((state, {comments}) => {
     return {
 
