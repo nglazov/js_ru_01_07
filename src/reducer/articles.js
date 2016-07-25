@@ -21,6 +21,8 @@ export default (articles = defaultArticles, action) => {
             return articles.delete(payload.id)
         case ADD_COMMENT:
             let article = articles.get(action.payload.articleId)
+            //а вот здесь ничего не происходит: ты создал новый объект статьи, но нигде ее не сохранил и она потерялась.
+            //посмотри выше, как мы возвращаем новую коллекцию articles, так надо и здесь. Ниже есть посказка: articles.updateIn([id, 'comments'], comments => ...)
             article.set('comments', article.get('comments').push(action.payload.id))
 
     }
