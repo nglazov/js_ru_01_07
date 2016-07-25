@@ -1,6 +1,6 @@
 import { normalizedArticles } from '../fixtures'
-import { DELETE_ARTICLE } from '../constants'
-import { Record } from 'immutable'
+import { DELETE_ARTICLE, ADD_COMMENT } from '../constants'
+import { Record, List } from 'immutable'
 import { recordsFromArray } from './utils'
 
 const Article = Record({
@@ -19,6 +19,10 @@ export default (articles = defaultArticles, action) => {
     switch (type) {
         case DELETE_ARTICLE:
             return articles.delete(payload.id)
+        case ADD_COMMENT:
+            let article = articles.get(action.payload.articleId)
+            article.set('comments', article.get('comments').push(action.payload.id))
+
     }
     //articles.set()
     //articles.update()

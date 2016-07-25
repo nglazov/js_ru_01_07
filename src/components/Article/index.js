@@ -21,8 +21,8 @@ class Article extends Component {
 */
 
     render() {
-        const { isOpen, openArticle, article: { title, text, comments } } = this.props
-            const body = isOpen ? <section>{ text } <CommentList comments = {comments} /></section> : null
+        const { isOpen, openArticle, article: { title, text, comments, id } } = this.props
+            const body = isOpen ? <section>{ text } <CommentList comments = {comments} articleId = {id} /></section> : null
 
             return (
                 <div className="article">
@@ -41,4 +41,4 @@ class Article extends Component {
     }
 }
 
-export default connect(null, { deleteArticle })(Article)
+export default connect((state, {comments})=>{return {comments}}, { deleteArticle })(Article)
