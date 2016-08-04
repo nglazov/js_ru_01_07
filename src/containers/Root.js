@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Provider } from 'react-redux'
-import Counter from './Counter'
-import Articles from './Articles'
 import store from '../store'
+import { Link } from 'react-router'
 
 class RootContainer extends Component {
     static propTypes = {
@@ -13,8 +12,12 @@ class RootContainer extends Component {
         return (
             <Provider store = {store}>
                 <div>
-                    <Counter />
-                    <Articles />
+                    <ul>
+                        <li><Link to="/articles">article list</Link></li>
+                        <li><Link to="/counter">counter</Link></li>
+                        <li><Link to="/filters">filters</Link></li>
+                    </ul>
+                    {this.props.children}
                 </div>
             </Provider>
         )
